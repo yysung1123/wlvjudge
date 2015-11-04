@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <h3>Add Contest</h3>
+
+      <%= simple_nested_form_for @contest do |f| %>
+      <div class="col-md-6">
+        <%= f.input :title, input_html: { maxlength: 128 } %>
+        <%= f.input :start_time, as: :datetime %>
+        <%= f.input :end_time, as: :datetime %>
+        <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
+      </div>
+      <div class="col-md-6">
+      </div>
+      <% end %>
+  <div class="col-md-6">
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <h3>Contest</h3>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Begin Time</th>
+        <th>End Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contests.order(:start_time).reverse.each do |c| %>
+      <tr>
+        <th><%= c.id %></th>
+        <th><%= link_to c.title, contest_path(c.id) %></th>
+        <th><%= relative_time(c.start_time) %></th>
+        <th><%= relative_time(c.end_time) %></th>
+      </tr>
+      <% end %>
+  </table>
+</div>
