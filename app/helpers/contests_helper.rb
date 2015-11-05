@@ -4,7 +4,7 @@ module ContestsHelper
     diff_seconds = Time.now - start_time
     case diff_seconds
     when 0 .. 59
-      return "#{diff_seconds} seconds ago"
+      return "#{diff_seconds.to_i} seconds ago"
     when 60 .. (3600-1)
       return "#{(diff_seconds/60).to_i} minutes ago"
     when 3600 .. (3600*24-1)

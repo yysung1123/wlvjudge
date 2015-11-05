@@ -3,20 +3,60 @@
   <table class="table table-hover table-striped">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Begin Time</th>
+        <th width="15%">ID</th>
+        <th width="20%">Title</th>
+        <th width="30%">Begin Time</th>
         <th>End Time</th>
       </tr>
     </thead>
     <tbody>
-      <% @contests.order(:start_time).reverse.each do |c| %>
+      <% @contests.order(:begin_time).reverse.each do |c| %>
       <tr>
         <th><%= c.id %></th>
         <th><%= link_to c.title, contest_path(c.id) %></th>
-        <th><%= relative_time(c.start_time) %></th>
-        <th><%= relative_time(c.end_time) %></th>
+        <th>
+          <div class="begintime">
+            <div class="rel">
+              <%= relative_time(c.begin_time) %>
+            </div>
+            <div class="abs" style="display: none;">
+              <%= c.begin_time.localtime %>
+            </div>
+          </div>
+        </th>
+        <th>
+          <div class="endtime">
+            <div class="rel">
+              <%= relative_time(c.end_time) %>
+            </div>
+            <div class="abs" style="display: none;">
+              <%= c.end_time.localtime %>
+            </div>
+          </div>
+        </th>
       </tr>
       <% end %>
+    </tbody>
   </table>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $(".begintime").mouseenter(function(){
+            $(".begintime .rel").hide();
+            $(".begintime .abs").show();
+        });
+        $(".begintime").mouseleave(function(){
+            $(".begintime .abs").hide();
+            $(".begintime .rel").show();
+        });
+        $(".endtime").mouseenter(function(){
+            $(".endtime .rel").hide();
+            $(".endtime .abs").show();
+        });
+        $(".endtime").mouseleave(function(){
+            $(".endtime .abs").hide();
+            $(".endtime .rel").show();
+        });
+    });
+  </script>

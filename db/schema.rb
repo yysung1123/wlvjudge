@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151103192711) do
 
   create_table "contests", force: :cascade do |t|
     t.string   "title"
-    t.datetime "start_time"
+    t.datetime "begin_time"
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

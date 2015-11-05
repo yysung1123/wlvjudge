@@ -35,7 +35,7 @@ class ContestsController < ApplicationController
 
   private
   def contest_params
-    params.require(:contest).permit(:title, :start_time, :end_time);
+    params.require(:contest).permit(:title, :begin_time, :end_time);
   end
 
   def find_contest
