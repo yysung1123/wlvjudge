@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h3>Problems</h3>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th width="15%">OJ</th>
+        <th width="20%">Prob ID</th>
+        <th width="30%">Title</th>
+        <th>Update Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @problems.order(:updated_at).reverse.each do |p| %>
+      <tr>
+        <th><%= Judge.find(p.judge_id).name %></th>
+        <th><%= link_to p.source, problem_path(p.id) %></th>
+        <th><%= link_to p.title, problem_path(p.id) %></th>
+        <th><%= time_ago_in_words(p.updated_at) + ' ago' %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

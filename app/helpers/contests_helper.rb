@@ -1,7 +1,7 @@
 module ContestsHelper
 
-  def relative_time(start_time)
-    diff_seconds = Time.now - start_time
+  def relative_time(begin_time)
+    diff_seconds = Time.now - begin_time
     case diff_seconds
     when 0 .. 59
       return "#{diff_seconds.to_i} seconds ago"
@@ -20,7 +20,7 @@ module ContestsHelper
     when -(3600*24*30) .. -(3600*24)
       return "#{(diff_seconds/(3600*24)).to_i.abs} days later"
     else
-      return start_time
+      return begin_time
     end
   end
 end

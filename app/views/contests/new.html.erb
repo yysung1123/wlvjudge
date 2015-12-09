@@ -9,6 +9,9 @@
         <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
       </div>
       <div class="col-md-6">
+        <%= f.fields_for :contest_problem_sets do |c| %>
+          <%= c.select :problem_id, Problem.all.collect { |p| [ Judge.find(p.judge_id).name, p.source, p.id] } %>
+        <% end %>
       </div>
       <% end %>
   <div class="col-md-6">
