@@ -10,19 +10,19 @@ module ProblemsHelper
 
   def zerojudge_parser(probid)
 
-  doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + probid))
+    doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + probid))
+    doc.xpath('//@style').remove
 
-  a = {}
-
-  a['title'] = doc.css('span#problem_title')[0].content
-  a['content'] = doc.css('div#problem_content')[0].content
-  a['input'] = doc.css('div#problem_theinput')[0].content
-  a['output'] = doc.css('#problem_theoutput')[0].content
-  a['sample_input'] = doc.css('div.problembox pre')[0].content
-  a['sample_output'] = doc.css('div.problembox pre')[1].content
-  a['hint'] = doc.css('div#problem_hint')[0].content
-
-  return a
+    a = {}
+    a['title'] = doc.at_css('#problem_title').content
+    a['content'] = doc.at_css('#problem_content').inner_html
+    a['input'] = doc.at_css('#problem_theinput').content
+    a['output'] = doc.at_css('#problem_theoutput').content
+    a['sample_input'] = doc.css('div.problembox pre').first.content
+    a['sample_output'] = doc.css('div.problembox pre').last.content
+    a['hint'] = doc.at_css('#problem_hint').content
+    
+    return a
 
   end
 
