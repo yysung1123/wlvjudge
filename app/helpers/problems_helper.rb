@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module ProblemsHelper
 
   def uva_parser(probid)

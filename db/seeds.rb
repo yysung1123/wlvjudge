@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Judge.create(:name => 'UVa')
+Judge.create(:name => 'ZeroJudge')
