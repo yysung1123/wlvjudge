@@ -8,9 +8,9 @@ module ProblemsHelper
     sample_output = doc.css('pre').last.text
   end
 
-  def zerojudge_parser(problemid)
+  def zerojudge_parser(probid)
 
-  doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + problemid))
+  doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + probid))
 
   a = {}
 
