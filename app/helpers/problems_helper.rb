@@ -12,14 +12,15 @@ module ProblemsHelper
 
   def zerojudge_parser(probid)
 
-    doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + probid))
+    base_url = 'http://zerojudge.tw/'
+    doc = Nokogiri::HTML(open(base_url + 'ShowProblem?problemid=' + probid))
     doc.xpath('//@style').remove
 
-    raise doc.at_css('h1').content if doc.at_css('legend').content == "EXCEPTION"
+    if doc.at_css('legend').content == "EXCEPTION" then raise doc.at_css('h1').content end
 
     a = {}
     a['title'] = doc.at_css('#problem_title').content
-    a['content'] = doc.at_css('#problem_content').inner_html
+    a['content'] = doc.at_css('#problem_content').inner_html.gsub(/ShowImage/, base_url + 'ShowImage\1')
     a['input'] = doc.at_css('#problem_theinput').content
     a['output'] = doc.at_css('#problem_theoutput').content
     a['sample_input'] = doc.css('div.problembox pre').first.content
