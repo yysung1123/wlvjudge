@@ -23,14 +23,12 @@ module ProblemsHelper
 
     a = {}
     a['title'] = doc.at_css('#problem_title').content
-    a['content'] = doc.at_css('#problem_content').inner_html.gsub(/ShowImage/, base_url + 'ShowImage\1')
+    a['content'] = doc.at_css('#problem_content').inner_html.gsub(/(ShowImage)/, base_url + '\1')
     a['input'] = doc.at_css('#problem_theinput').content
     a['output'] = doc.at_css('#problem_theoutput').content
     a['sample_input'] = doc.css('div.problembox pre').first.content
     a['sample_output'] = doc.css('div.problembox pre').last.content
     a['hint'] = doc.at_css('#problem_hint').content
-
-    #a['content'].gsub!('ShowImage','http://zerojudge.tw/ShowImage')
 
     return a
 
