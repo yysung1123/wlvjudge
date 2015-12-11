@@ -36,6 +36,8 @@ class ProblemsController < ApplicationController
       res = uva_parser(probid)
     when 2
       res = zerojudge_parser(probid)
+    when 3
+      res = greenjudge_parser(probid)
     end
     params[:problem].merge!(res)
 

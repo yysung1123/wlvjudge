@@ -28,7 +28,31 @@ module ProblemsHelper
     a['sample_output'] = doc.css('div.problembox pre').last.content
     a['hint'] = doc.at_css('#problem_hint').content
     
-  return a
+    return a
+  end
+
+  def greenjudge_parser(probid)
+
+    base_url = 'http://www.tcgs.tc.edu.tw:1218/'
+    doc = Nokogiri::HTML(open(base_url + 'ShowProblem?problemid=' + probid)).at_css('.content_individual')
+
+    title = doc.at_css('.ShowProblem')
+    raise 'Cannot find problem ' + probid if title == nil
+
+    doc.xpath('//@style').remove
+
+    box = doc.css('.problembox')
+
+    a = {}
+    a['title'] = title.content.gsub(probid + ': ', '')
+    a['content'] = box[0].inner_html.gsub(/(images)/, base_url + '\1')
+    a['input'] = box[1].content
+    a['output'] = box[2].content
+    a['sample_input'] = box[3].at_css('pre').content
+    a['sample_output'] = box[4].at_css('pre').content
+    a['hint'] = box[5].content
+
+    return a
 
   end
 

@@ -8,3 +8,4 @@
 
 Judge.create(:name => 'UVa')
 Judge.create(:name => 'ZeroJudge')
+Judge.create(:name => 'GreenJudge')
