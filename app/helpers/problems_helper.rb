@@ -15,6 +15,8 @@ module ProblemsHelper
     doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + probid))
     doc.xpath('//@style').remove
 
+    if doc.at_css('legend').content == "EXCEPTION" then raise doc.at_css('h1').content end
+
     a = {}
     a['title'] = doc.at_css('#problem_title').content
     a['content'] = doc.at_css('#problem_content').inner_html
