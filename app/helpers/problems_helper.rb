@@ -14,6 +14,9 @@ module ProblemsHelper
 
     doc = Nokogiri::HTML(open('http://zerojudge.tw/ShowProblem?problemid=' + probid))
     doc.xpath('//@style').remove
+    doc.xpath("//img").each do |img|
+      img['src']  = "http://zerojudge.tw/#{img['src']}"
+    end
 
     raise doc.at_css('h1').content if doc.at_css('legend').content == "EXCEPTION"
 
@@ -25,7 +28,9 @@ module ProblemsHelper
     a['sample_input'] = doc.css('div.problembox pre').first.content
     a['sample_output'] = doc.css('div.problembox pre').last.content
     a['hint'] = doc.at_css('#problem_hint').content
-    
+
+    #a['content'].gsub!('ShowImage','http://zerojudge.tw/ShowImage')
+
     return a
 
   end
