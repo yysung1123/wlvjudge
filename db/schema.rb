@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20151103192711) do
   create_table "contest_problem_sets", force: :cascade do |t|
     t.integer  "contest_id"
     t.integer  "problem_id"
-    t.string   "judge"
+    t.integer  "judge_id"
     t.string   "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
