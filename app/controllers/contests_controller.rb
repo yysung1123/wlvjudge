@@ -11,6 +11,9 @@ class ContestsController < ApplicationController
 
   def new
     @contest = Contest.new
+    3.times do
+      contest_problem_set = @contest.contest_problem_sets.build
+    end
   end
 
   def create
@@ -35,7 +38,7 @@ class ContestsController < ApplicationController
 
   private
   def contest_params
-    params.require(:contest).permit(:title, :begin_time, :end_time);
+    params.require(:contest).permit(:title, :begin_time, :end_time, contest_problem_sets_attributes: [:id, :judge, :source, :_destroy]);
   end
 
   def find_contest

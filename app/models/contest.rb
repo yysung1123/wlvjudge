@@ -1,6 +1,7 @@
 class Contest < ActiveRecord::Base
   has_many :contest_problem_sets
   has_many :problems, :through => :contest_problem_sets
+  accepts_nested_attributes_for :contest_problem_sets, :reject_if => :all_blank, :allow_destroy => true
   has_many :submissions
 
   validate :begin_time_cannot_be_before_now, on: :create

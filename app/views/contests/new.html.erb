@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <h3>Add Contest</h3>
-
       <%= simple_nested_form_for @contest do |f| %>
       <div class="col-md-6">
         <%= f.input :title, input_html: { maxlength: 128 } %>
@@ -10,10 +9,11 @@
       </div>
       <div class="col-md-6">
         <%= f.fields_for :contest_problem_sets do |c| %>
-          <%= c.select :problem_id, Problem.all.collect { |p| [ Judge.find(p.judge_id).name, p.source, p.id] } %>
+          <%= c.input :judge %>
+          <%= c.input :source %>
+          <%= c.link_to_remove "Remove this task" %>
         <% end %>
+        <%= f.link_to_add "Add a task", :contest_problem_sets %>
       </div>
-      <% end %>
-  <div class="col-md-6">
-  </div>
+    <% end %>
 </div>
