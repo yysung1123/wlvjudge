@@ -11,7 +11,7 @@ class ContestsController < ApplicationController
 
   def new
     @contest = Contest.new
-    3.times do
+    5.times do
       contest_problem_set = @contest.contest_problem_sets.build
     end
   end
