@@ -2,6 +2,7 @@
   <h3>Add Contest</h3>
       <%= simple_nested_form_for @contest do |f| %>
       <div class="col-md-6">
+        <h4>Contest Information</h4>
         <div class="form-group">
           <%= f.input :title %>
         </div>
@@ -10,20 +11,20 @@
         <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
       </div>
       <div class="col-md-6">
+        <h4>Add Problems</h4>
         <%= f.fields_for :contest_problem_sets do |c| %>
-
-          <%= c.collection_select :judge_id, Judge.all, :id, :name, :class => 'form-control' %>
+          <%= c.collection_select :judge_id, Judge.all, :id, :name, {}, { :class => 'select select-primary mbl' } %>
           <%= c.text_field :source %>
-          <%= c.link_to_remove "Remove this task" %>
+          <%= c.link_to_remove "Remove this Problem" %>
         <% end %>
-        <%= f.link_to_add "Add a task", :contest_problem_sets %>
+        <%= f.link_to_add "Add a Problem", :contest_problem_sets %>
       </div>
     <% end %>
     <script>
       $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-    $(document).on('nested:fieldAdded', function(event){
-  // this field was just inserted into your form
-      $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-    })
+      $(document).on('nested:fieldAdded', function(event){
+        // this field was just inserted into your form
+        $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+      })
     </script>
 </div>

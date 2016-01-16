@@ -9,7 +9,6 @@ class ContestProblemSet < ActiveRecord::Base
     begin
       set_problem_id
     rescue
-      #params = { :problem => { :source => self.source, :judge_id => self.judge_id } }
       params = ActionController::Parameters.new({
         problem: {
           source: self.source,
