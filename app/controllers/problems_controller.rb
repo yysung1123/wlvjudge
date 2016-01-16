@@ -31,15 +31,7 @@ class ProblemsController < ApplicationController
   def problem_params
     probid = params[:problem][:source]
     oj = params[:problem][:judge_id].to_i
-    case oj
-    when 1
-      res = uva_parser(probid)
-    when 2
-      res = zerojudge_parser(probid)
-    when 3
-      res = greenjudge_parser(probid)
-    end
-    params[:problem].merge!(res)
+    params[:problem].merge!(oj_parser(oj, probid))
 
     params.require(:problem).permit(:judge_id, :source, :title, :content, :input, :output, :sample_input, :sample_output, :hint)
   end

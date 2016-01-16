@@ -21,11 +21,6 @@
     <% end %>
     <script>
       $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-      /*$(document).ready(function(){
-        $(".add_nested_fields").on("click", function(){
-          $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-        });
-      });*/
     $(document).on('nested:fieldAdded', function(event){
   // this field was just inserted into your form
       $("select").select2({dropdownCssClass: 'dropdown-inverse'});

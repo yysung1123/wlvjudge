@@ -2,8 +2,20 @@ require 'open-uri'
 
 module ProblemsHelper
 
+  def oj_parser(oj, probid)
+    case oj
+    when 1
+      res = uva_parser(probid)
+    when 2
+      res = zerojudge_parser(probid)
+    when 3
+      res = greenjudge_parser(probid)
+    end
+    return res
+  end
+
   def uva_parser(probid)
-    url = "https://uva.onlinejudge.org/external/" + (probid / 100).to_s + "/" + probid.to_s + ".html"
+    url = "https://uva.onlinejudge.org/external/" + (probid.to_i / 100).to_s + "/" + probid.to_s + ".html"
     doc = Nokogiri::HTML.parse(open(url))
     title = doc.at_css('title').text
     sample_input = doc.css('pre').first.text
@@ -27,7 +39,7 @@ module ProblemsHelper
     a['sample_input'] = doc.css('div.problembox pre').first.content
     a['sample_output'] = doc.css('div.problembox pre').last.content
     a['hint'] = doc.at_css('#problem_hint').content
-    
+
     return a
   end
 
