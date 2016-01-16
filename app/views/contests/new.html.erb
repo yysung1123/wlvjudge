@@ -5,12 +5,6 @@
         <div class="form-group">
           <%= f.input :title %>
         </div>
-        <style>
-          .form-inline .form-control,
-          .select2-search input[type="text"] {
-            border: 0px solid #bdc3c7;
-          }
-        </style>
         <%= f.input :begin_time, as: :datetime, :input_html => { :class => 'select-primary' } %>
         <%= f.input :end_time, as: :datetime, :input_html => { :class => 'select-primary' } %>
         <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
