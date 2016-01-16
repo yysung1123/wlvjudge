@@ -1,25 +1,32 @@
 <div class="container-fluid">
   <h3>Add Contest</h3>
-      <%= nested_form_for @contest do |f| %>
+      <%= simple_nested_form_for @contest do |f| %>
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, :maxlength => 128, :class => 'form-control flat' %>
+          <%= f.input :title %>
         </div>
         <div class="form-group">
-        <%= f.datetime_select :begin_time, as: :datetime, :class => 'select2'%>
-        <%= f.datetime_select :end_time, as: :datetime, :class => 'select' %>
+        <%= f.input :begin_time, as: :datetime %>
+        <%= f.input :end_time, as: :datetime %>
         </div>
         <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
       </div>
       <div class="col-md-6">
         <%= f.fields_for :contest_problem_sets do |c| %>
 
-          <%= c.collection_select :judge_id, Judge.all, :id, :name, { :class => 'form-control' } %>
+          <%= c.collection_select :judge_id, Judge.all, :id, :name, :class => 'form-control' %>
           <%= c.text_field :source %>
           <%= c.link_to_remove "Remove this task" %>
         <% end %>
         <%= f.link_to_add "Add a task", :contest_problem_sets %>
       </div>
     <% end %>
+    <script>
+      $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+      /*$(document).ready(function(){
+        $(".add_nested_fields").on("click", function(){
+          $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+        });
+      });*/
+    </script>
 </div>

@@ -38,7 +38,7 @@ class ContestsController < ApplicationController
 
   private
   def contest_params
-    params.require(:contest).permit(:title, :begin_time, :end_time, contest_problem_sets_attributes: [:id, :judge, :source, :_destroy]);
+    params.require(:contest).permit(:title, :begin_time, :end_time, contest_problem_sets_attributes: [:id, :judge_id, :source, :_destroy]);
   end
 
   def find_contest

@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= bootstrap.min
 //= require flat-ui
 //= require jquery_nested_form
+//= require livequery.min
 //= require_tree .
