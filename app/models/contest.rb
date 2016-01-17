@@ -1,5 +1,5 @@
 class Contest < ActiveRecord::Base
-  has_many :contest_problem_sets
+  has_many :contest_problem_sets, :dependent => :destroy
   has_many :problems, :through => :contest_problem_sets
   accepts_nested_attributes_for :contest_problem_sets, :reject_if => :all_blank, :allow_destroy => true
   has_many :submissions
