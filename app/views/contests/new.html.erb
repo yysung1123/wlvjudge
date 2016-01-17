@@ -3,22 +3,20 @@
       <%= simple_nested_form_for @contest do |f| %>
       <div class="col-md-6">
         <h4>Contest Information</h4>
-        <div class="form-group">
-          <%= f.input :title %>
-        </div>
+        <%= f.input :title %>
         <%= f.input :begin_time, as: :datetime, :input_html => { :class => 'select-primary' } %>
         <%= f.input :end_time, as: :datetime, :input_html => { :class => 'select-primary' } %>
-        <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
       </div>
       <div class="col-md-6">
-        <h4>Add Problems</h4>
+        <h4>Problems</h4>
         <%= f.fields_for :contest_problem_sets do |c| %>
-          <%= c.collection_select :judge_id, Judge.all, :id, :name, {}, { :class => 'select select-primary mbl' } %>
+          <%= c.collection_select :judge_id, Judge.all, :id, :name, {}, { :class => 'select select-primary mbl', :width => 50 } %>
           <%= c.text_field :source %>
-          <%= c.link_to_remove "Remove this Problem" %>
+          <%= c.link_to_remove "Remove" %>
         <% end %>
         <%= f.link_to_add "Add a Problem", :contest_problem_sets %>
       </div>
+      <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
     <% end %>
     <script>
       $("select").select2({dropdownCssClass: 'dropdown-inverse'});
