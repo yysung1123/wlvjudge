@@ -6,7 +6,8 @@
         <th width="15%">ID</th>
         <th width="20%">Title</th>
         <th width="30%">Begin Time</th>
-        <th>End Time</th>
+        <th width="30%">End Time</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,9 @@
             </div>
           </div>
         </th>
+        <th>
+        <th>
+          <%= button_to 'Delete', contest_path(c), :method => 'delete', :data => { :confirm => "Are you sure?" }, class: 'btn btn-danger mrs' %>
       </tr>
       <% end %>
     </tbody>

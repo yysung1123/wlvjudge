@@ -34,6 +34,7 @@ class ContestsController < ApplicationController
 
   def destroy
     @contest.destroy
+    redirect_to contests_path
   end
 
   private
