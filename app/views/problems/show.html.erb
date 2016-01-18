@@ -6,15 +6,15 @@
   <br>
   <br>
   <h4>Content</h4>
-  <p><%= @problem.content.html_safe %></p>
+  <p><%= sanitize @problem.content %></p>
   <h4>Input</h4>
-  <p><%= @problem.input.html_safe %></p>
+  <p><%= sanitize @problem.input %></p>
   <h4>Output</h4>
-  <p><%= @problem.output.html_safe %></p>
+  <p><%= sanitize @problem.output %></p>
   <h4>Sample Input</h4>
-  <pre><%= @problem.sample_input.html_safe %></pre>
+  <pre><%= sanitize @problem.sample_input %></pre>
   <h4>Sample Output</h4>
-  <pre><%= @problem.sample_output.html_safe %></pre>
+  <pre><%= sanitize @problem.sample_output %></pre>
   <h4>Hint</h4>
   <p><%= @problem.hint %></p>
   </div>
