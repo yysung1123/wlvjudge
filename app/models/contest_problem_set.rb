@@ -3,7 +3,9 @@ class ContestProblemSet < ActiveRecord::Base
   belongs_to :contest
   belongs_to :problem
 
-  before_create :link_to_problem
+  validates_presence_of :problem_id, :on => :create
+
+  before_validation :link_to_problem
 
   def link_to_problem
     begin
