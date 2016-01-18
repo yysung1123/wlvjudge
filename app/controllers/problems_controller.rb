@@ -29,10 +29,6 @@ class ProblemsController < ApplicationController
   end
 
   def problem_params
-    probid = params[:problem][:source]
-    oj = params[:problem][:judge_id].to_i
-    params[:problem].merge!(oj_parser(oj, probid))
-
     params.require(:problem).permit(:judge_id, :source, :title, :content, :input, :output, :sample_input, :sample_output, :hint)
   end
 
