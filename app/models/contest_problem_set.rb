@@ -1,5 +1,4 @@
 class ContestProblemSet < ActiveRecord::Base
-  include ProblemsHelper
   belongs_to :contest
   belongs_to :problem
 
