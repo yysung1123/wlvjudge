@@ -1,5 +1,4 @@
 class ProblemsController < ApplicationController
-  include ProblemsHelper
   before_action :find_problem, :only => [ :show, :edit, :update, :destroy]
 
   def index

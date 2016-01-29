@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151103192711) do
   create_table "submissions", force: :cascade do |t|
     t.integer  "problem_id"
     t.integer  "contest_id"
+    t.text     "code"
     t.string   "result"
     t.string   "runtime"
     t.integer  "memory"
