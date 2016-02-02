@@ -27,6 +27,6 @@ class SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:problem_id, :contest_id, :result, :runtime, :memory, :language)
+    params.require(:submission).permit(:problem_id, :contest_id, :result, :runtime, :memory, :language, :code)
   end
 end

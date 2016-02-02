@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <h3 align="center"><%= @contest.title %></h3>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contest.contest_problem_sets.each do |c| %>
+      <tr>
+        <th><%= link_to c.problem.title, contest_contest_problem_set_path(c.contest_id, c.id) %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -22,7 +22,6 @@ class Problem < ActiveRecord::Base
         res = greenjudge_parser(self.source)
       end
       self.title = res['title']
-      puts self.title
       self.content = res['content']
       self.input = res['input']
       self.output = res['output']

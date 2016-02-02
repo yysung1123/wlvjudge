@@ -1,17 +1,15 @@
 <div class="container-fluid">
   <h3>Add Problem</h3>
-
-      <%= simple_form_for @problem do |f| %>
-      <div class="col-md-6">
-        <%= f.select :judge_id, Judge.all.map { |j| [j.name, j.id]}, {}, { :class => 'form-control select select-primary mbl' } %>
-        <%= f.input :source  %>
-        <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
-      </div>
-      <div class="col-md-6">
-
-      </div>
-      <script>
-        $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-      </script>
-      <% end %>
+  <%= simple_form_for @problem do |f| %>
+    <div class="col-md-6">
+      <%= f.select :judge_id, Judge.all.map { |j| [j.name, j.id]}, {}, { :class => 'form-control select select-primary mbl' } %>
+      <%= f.input :source  %>
+      <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
+    </div>
+    <div class="col-md-6">
+    </div>
+    <script>
+      $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+    </script>
+  <% end %>
 </div>

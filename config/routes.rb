@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
-  resources :contests
+  resources :contests do
+    resources :contest_problem_sets
+  end
   resources :problems do
     resources :submissions
   end
