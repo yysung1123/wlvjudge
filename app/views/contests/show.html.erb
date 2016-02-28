@@ -7,10 +7,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @contest.contest_problem_sets.each do |c| %>
-      <tr>
-        <th><%= link_to c.problem.title, contest_contest_problem_set_path(c.contest_id, c.id) %></th>
-      </tr>
+      <% @contest_problem_sets.each do |c| %>
+        <tr>
+          <th><%= link_to c.problem.title, contest_contest_problem_set_path(c.contest_id, c.id) %></th>
+        </tr>
       <% end %>
     </tbody>
   </table>

@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
   before_action :find_problem, :only => [ :show, :edit, :update, :destroy]
 
   def index
-    @problems = Problem.all
+    @problems = Problem.all.includes(:judge)
   end
 
   def new

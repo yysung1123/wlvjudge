@@ -2,11 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
   resources :contests do
-    resources :contest_problem_sets
+    resources :contest_problem_sets, :submissions
   end
-  resources :problems do
-    resources :submissions
-  end
+  resources :problems
   resources :submissions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

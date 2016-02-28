@@ -7,12 +7,14 @@ class ContestsController < ApplicationController
   end
 
   def show
+    @contest_problem_sets = @contest.contest_problem_sets.includes(:problem)
   end
 
   def new
     @contest = Contest.new
+    @judges = Judge.all
     5.times do
-      contest_problem_set = @contest.contest_problem_sets.build
+      @contest.contest_problem_sets.build
     end
   end
 
