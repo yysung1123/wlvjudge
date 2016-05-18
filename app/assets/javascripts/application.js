@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= bootstrap.min
-//= require flat-ui
 //= require jquery_nested_form
+//= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
+//= require moment/zh-tw
 //= require_tree .

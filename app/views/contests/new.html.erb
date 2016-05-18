@@ -1,28 +1,31 @@
 <div class="container-fluid">
   <h3>Add Contest</h3>
-      <%= simple_nested_form_for @contest do |f| %>
-      <div class="col-md-6">
-        <h4>Contest Information</h4>
-        <%= f.input :title %>
-        <%= f.input :begin_time, as: :datetime, :input_html => { :class => 'select-primary' } %>
-        <%= f.input :end_time, as: :datetime, :input_html => { :class => 'select-primary' } %>
-      </div>
-      <div class="col-md-6">
-        <h4>Problems</h4>
-        <%= f.fields_for :contest_problem_sets do |c| %>
-          <%= c.collection_select :judge_id, Judge.all, :id, :name, {}, { :class => 'select select-primary mbl' } %>
-          <%= c.text_field :source %>
-          <%= c.link_to_remove "Remove" %>
-        <% end %>
-        <%= f.link_to_add "Add a Problem", :contest_problem_sets %>
-      </div>
-      <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
+  <%= simple_nested_form_for @contest do |f| %>
+  <div class="col-md-6">
+    <h4>Contest Information</h4>
+    <%= f.input :title %>
+    <%= f.input :begin_time, :as => :datetime_picker, input_html: { data: { date_options: { locale: "zh-tw" } } } %>
+    <%= f.input :end_time, :as => :datetime_picker, input_html: { data: { date_options: { locale: "zh-tw" } } } %>
+    <%= f.button :submit, :class => 'btn btn-lg btn-primary' %>
+  </div>
+  <div class="col-md-6">
+    <h4>Problems</h4>
+    <%= f.fields_for :contest_problem_sets do |c| %>
+    <div class="col-xs-6">
+      <%= c.label "Judges" %>
+      <%= c.collection_select :judge_id, @judges, :id, :name, {}, { :class => 'form-control select select-primary' } %>
+      <%= c.input :source %>
+      <%= c.link_to_remove "Remove", :class => 'btn btn-danger' %>
+    </div>
     <% end %>
-    <script>
-      $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-      $(document).on('nested:fieldAdded', function(event){
-        // this field was just inserted into your form
-        $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-      })
-    </script>
+    <%= f.link_to_add "Add a Problem", :contest_problem_sets %>
+  </div>
+  <% end %>
+  <script>
+  $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+  $(document).on('nested:fieldAdded', function(event){
+  // this field was just inserted into your form
+  $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+  })
+  </script>
 </div>
