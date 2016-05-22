@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div style="text-align: center;">
+    <h3><%= problem.title %></h3>
+  </div>
+  <div class="content">
+  <br>
+  <br>
+  <h4>Content</h4>
+  <p><%= sanitize problem.content %></p>
+  <h4>Input</h4>
+  <p><%= sanitize problem.input %></p>
+  <h4>Output</h4>
+  <p><%= sanitize problem.output %></p>
+  <h4>Sample Input</h4>
+  <pre><%= sanitize problem.sample_input %></pre>
+  <h4>Sample Output</h4>
+  <pre><%= sanitize problem.sample_output %></pre>
+  <h4>Hint</h4>
+  <p><%= problem.hint %></p>
+  </div>
+</div>

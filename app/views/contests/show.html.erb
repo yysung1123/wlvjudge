@@ -21,7 +21,7 @@
         <% else %>
         <th><%= link_to "p#{index + 1}" %></th>
         <% end %>
-        <th><%= link_to c.problem.title %></th>
+        <th><%= link_to c.problem.title, contest_contest_problem_set_path(c.contest.id, c.id) %></th>
       </tr>
       <% end %>
     </tbody>
