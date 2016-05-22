@@ -3,7 +3,7 @@ class ContestProblemSet < ActiveRecord::Base
   belongs_to :contest
   belongs_to :problem
 
-  validates_presence_of :problem_id, :on => :create
+  validate :success, :on => :create
 
   before_validation :link_to_problem
 
@@ -30,6 +30,10 @@ class ContestProblemSet < ActiveRecord::Base
 
   def set_problem_id
     self.problem_id = Problem.all.where(judge_id: self.judge_id).where(source: self.source).first.id
+  end
+
+  def success
+    errors.add(:source, "can't find the problem!") if self.problem_id.nil?
   end
 
 end
