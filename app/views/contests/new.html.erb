@@ -13,7 +13,7 @@
     <%= f.fields_for :contest_problem_sets do |c| %>
     <div class="col-xs-6">
       <%= c.label "Judges" %>
-      <%= c.collection_select :judge_id, @judges, :id, :name, {}, { :class => 'form-control select select-primary' } %>
+      <%= c.collection_select :judge_id, Judge.all, :id, :name, {}, { :class => 'form-control select select-primary' } %>
       <%= c.input :source %>
       <%= c.link_to_remove "Remove", :class => 'btn btn-danger' %>
     </div>

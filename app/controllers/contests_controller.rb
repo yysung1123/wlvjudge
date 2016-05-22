@@ -11,7 +11,6 @@ class ContestsController < ApplicationController
   end
 
   def new
-    @judges = Judge.all
     @contest = Contest.new
     1.times do
       contest_problem_set = @contest.contest_problem_sets.build
