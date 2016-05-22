@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h1><%= @contest.title %></h1>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <% if contest_over? @contest %>
+        <th width="20%">OJ</th>
+        <th width="30%">Prob ID</th>
+        <% else %>
+        <th width="30%">Contest Prob ID</th>
+        <% end %>
+        <th width="50%">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contest_problem_sets.each_with_index do |c, index| %>
+      <tr>
+        <% if contest_over? @contest %>
+        <th><%= c.problem.judge.name %></th>
+        <th><%= link_to c.problem.source %></th>
+        <% else %>
+        <th><%= link_to "p#{index + 1}" %></th>
+        <% end %>
+        <th><%= link_to c.problem.title %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

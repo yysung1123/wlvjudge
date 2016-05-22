@@ -7,6 +7,7 @@ class ContestsController < ApplicationController
   end
 
   def show
+    @contest_problem_sets = @contest.contest_problem_sets.all.includes(:problem)
   end
 
   def new

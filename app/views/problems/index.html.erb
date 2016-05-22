@@ -13,7 +13,7 @@
     <tbody>
       <% @problems.order(:updated_at).reverse.each do |p| %>
       <tr>
-        <th><%= Judge.find(p.judge_id).name %></th>
+        <th><%= p.judge.name %></th>
         <th><%= link_to p.source, problem_path(p.id) %></th>
         <th><%= link_to p.title, problem_path(p.id) %></th>
         <th><%= time_ago_in_words(p.updated_at) + ' ago' %></th>
